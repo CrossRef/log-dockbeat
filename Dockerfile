@@ -1,3 +1,6 @@
-FROM ingensi/dockbeat
+FROM docker.elastic.co/beats/metricbeat:5.6.1
 
-COPY dockbeat.yml /etc/dockbeat/dockbeat.yml 
+COPY metricbeat.yml /usr/share/metricbeat/metricbeat.yml
+USER root
+RUN chown metricbeat /usr/share/metricbeat/metricbeat.yml
+USER metricbeat
